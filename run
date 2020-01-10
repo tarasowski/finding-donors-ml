@@ -1,0 +1,53 @@
+#!/bin/sh
+#Author: Dimitri Tarasowski
+
+export TRAINING_DATA=input/census.csv
+export X_TRAIN=models/x_train.pkl 
+export X_TEST=models/x_test.pkl 
+export Y_TRAIN=models/y_train.pkl 
+export Y_TEST=models/y_test.pkl 
+
+if [[ "$1" == "preprocess" ]]
+then 
+  echo "Running: $1"
+  ENV=script python3 -m src.preprocess 
+fi
+                                
+if [[ "$1" == "train" ]]
+then 
+  START=`date +%s`
+  echo "Running: $1"
+  echo "Model: $2"
+  MODEL=$2 python3 -m src.train 
+  END=`date +%s`
+  echo "Running time: $(($END - $START)) sec"
+fi
+
+if [[ "$1" == "predict" ]]
+then 
+  START=`date +%s`
+  echo "Running: $1"
+  MODEL=$2 python3 -m src.predict 
+  END=`date +%s`
+  echo "Running time: $(($END - $START)) sec"
+fi
+
+if [[ "$1" == "optimize" ]]
+then 
+  START=`date +%s`
+  echo "Running: $1"
+  MODEL=$2 python3 -m src.optimize
+  END=`date +%s`
+  echo "Running time: $(($END - $START)) sec"
+fi
+
+#FOLD=0 python3 -m src.train
+#FOLD=1 python3 -m src.train
+#FOLD=2 python3 -m src.train
+#FOLD=3 python3 -m src.train
+#FOLD=4 python3 -m src.train
+
+#python3 -m src.predict
+#python3 -m src.train
+
+
