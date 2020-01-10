@@ -33,5 +33,10 @@ Run `./run predict <algorithm_name>`. Currently, it runs with the test data from
 Patches are encouraged and may be submitted by forking this project
 and submitting a pull request through GitHub. 
 
+## Credits
+The project was developed during the ML program of
+[Udacity.com](https://www.udacity.com/)
+
 ## Licence
 Released under the [MIT License](./License.md)
+
